@@ -105,25 +105,6 @@ textarea {
     flex-direction: column;
   }
 
-  &__input {
-    padding-left: 42px;
-    outline-style: none;
-    border: 1px solid rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
-
-    transition-property: border-color;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:focus {
-      border-color: $accent;
-
-      .application__icon {
-        fill: $accent;
-      }
-    }
-  }
-
   &__icon {
     position: absolute;
     display: flex;
@@ -136,6 +117,24 @@ textarea {
     transition-property: fill;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__input {
+    padding-left: 42px;
+    outline-style: none;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+
+    transition-property: border-color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:focus {
+      border-color: $accent;
+    }
+    &:focus + .application__icon {
+      fill: $accent;
+    }
   }
 
   textarea {
@@ -173,6 +172,15 @@ textarea {
   letter-spacing: 0.03em;
   color: $subtitleText;
 
+  &__icon-input {
+    display: inline-block;
+    margin-right: 7px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid $titleText;
+    border-radius: 2px;
+  }
+
   &__checkbox {
     position: absolute;
     width: 1px;
@@ -186,20 +194,15 @@ textarea {
     clip: rect(0 0 0 0);
     overflow: hidden;
 
-    &:checked {
-      .privacy-text__icon-input {
-        border-color: $accent;
-        background: $accent;
-        background-image: url('../images/ok-check.svg');
-        background-size: contain;
-        background-origin: border-box;
-      }
+    &:checked + .privacy-text__icon-input {
+      border-color: $accent;
+      background: $accent;
+      background-image: url('../images/ok-check.svg');
+      background-size: contain;
+      background-origin: border-box;
     }
-
-    &:focus {
-      .privacy-text__icon-input {
-        border-color: $accent;
-      }
+    &:focus + .privacy-text__icon-input {
+      border-color: $accent;
     }
   }
 
@@ -208,15 +211,6 @@ textarea {
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 0.03em;
-  }
-
-  &__icon-input {
-    display: inline-block;
-    margin-right: 7px;
-    width: 15px;
-    height: 15px;
-    border: 2px solid $titleText;
-    border-radius: 2px;
   }
 }
 
